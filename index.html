@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mossaic · Security-first NFT marketplace on X1 EcoChain</title>
+    <meta name="description" content="Mint, collect and trade NFTs on X1 EcoChain. A security-first marketplace with zero custody. Testnet coming soon." />
+    <meta name="theme-color" content="#0C1613" />
+    <meta property="og:title" content="Mossaic · NFTs on X1 EcoChain" />
+    <meta property="og:description" content="A security-first marketplace with zero custody. Testnet coming soon." />
+    <meta property="og:image" content="mossaic-x-banner.png" />
+    <meta property="og:url" content="https://mossaic.xyz" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mossaicxyz" />
+    <meta name="twitter:image" content="mossaic-x-banner.png" />
+    <link rel="icon" type="image/png" href="mossaic-icon-v3-dark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* Mossaic brand: the library's tokens, set to the brand's palette, dark only. */
+      :root,
+      :root[data-theme="dark"],
+      :root[data-theme="light"] {
+        color-scheme: dark;
+        --x-bg: #0c1613;
+        --x-ink: #f5f2ea;
+        --x-ink-2: #c4cebe;
+        --x-lime: #9bd33a;
+        --x-t1: #5e7f3e; --x-t2: #6e8b47; --x-t3: #4f7a3f; --x-t4: #1f5a3a;
+        --x-t5: #6b8a4a; --x-t6: #2e4d24; --x-t7: #5c7440; --x-t8: #3a6b3e;
+        --text-primary: var(--x-ink);
+        --text-secondary: var(--x-ink-2);
+        --text-tertiary: #f5f2ea4d;
+        --text-primary-on: var(--x-bg);
+        --fill-primary: var(--x-ink);
+        --fill-primary-on: var(--x-bg);
+        --fill-tertiary: #15241e;
+        --fill-system-green: var(--x-lime);
+        --fill-system-orange: var(--x-lime);
+        --stroke-system-orange: #9bd33a33;
+        --stroke-primary: #f5f2ea24;
+        --stroke-secondary: #f5f2ea14;
+        --hover-wash: #f5f2ea0d;
+        --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      }
+      :focus-visible { outline-color: var(--x-lime); }
+
+      /* Header */
+      .x-head {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding-block: 8px;
+      }
+      .x-brand {
+        display: inline-flex; align-items: center; gap: 10px; min-height: var(--tap);
+        color: var(--text-primary); text-decoration: none;
+        font: var(--weight-bold) var(--size-heading)/1 var(--sans); letter-spacing: -0.02em;
+      }
+      .x-brand img { width: 32px; height: 32px; border-radius: 8px; }
+      .x-xlink {
+        display: inline-grid; place-items: center; min-width: var(--tap); min-height: var(--tap);
+        padding-inline: 14px; border-radius: var(--r-pill); border: 1px solid var(--stroke-primary);
+        color: var(--text-primary); text-decoration: none; font: var(--type-label);
+        transition: border-color var(--dur-quick) ease, color var(--dur-quick) ease;
+      }
+      .x-xlink:hover { border-color: var(--x-lime); color: var(--x-lime); }
+
+      /* Hero */
+      .x-hero {
+        position: relative; isolation: isolate; overflow: hidden;
+        display: grid; justify-items: center; text-align: center; gap: 22px;
+        padding: clamp(16px, 4vw, 40px) 0 clamp(48px, 7vw, 88px);
+      }
+      .x-tiles {
+        position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%;
+        pointer-events: none;
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, #000 75%);
+        mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, #000 75%);
+        opacity: 0.55;
+      }
+      .x-wordmark {
+        width: min(100%, 720px); height: auto; aspect-ratio: 1408 / 768; object-fit: cover;
+        margin-block: -4% -6%;
+        -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 60%, transparent 100%);
+        mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, #000 60%, transparent 100%);
+      }
+      .x-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 6px 14px 6px 10px; border-radius: var(--r-pill);
+        border: 1px solid #4a6a2a; background: #16261b;
+        color: var(--x-lime); font: var(--weight-bold) var(--size-caption)/var(--lh) var(--sans);
+        letter-spacing: 0.06em; text-transform: uppercase;
+      }
+      .x-badge::before {
+        content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--x-lime);
+        box-shadow: 0 0 0 4px #9bd33a26;
+      }
+      .x-hero h1 {
+        font: var(--weight-bold) clamp(32px, 5.4vw, 56px)/1.08 var(--sans);
+        letter-spacing: -0.03em; max-width: 18ch;
+      }
+      .x-sub { font: var(--type-lede); font-weight: var(--weight-regular); color: var(--text-secondary); max-width: 52ch; }
+      .x-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+      .x-cta {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        min-height: 48px; padding: 0 22px; border-radius: var(--r-s);
+        font: var(--weight-bold) var(--size-body)/1 var(--sans); text-decoration: none;
+        transition: transform var(--dur-quick) var(--ease-out), background var(--dur-quick) ease, border-color var(--dur-quick) ease;
+      }
+      .x-cta--primary { background: var(--x-lime); color: var(--x-bg); }
+      .x-cta--primary:hover { background: #aee052; transform: translateY(-1px); }
+      .x-cta--ghost { border: 1px solid var(--stroke-primary); color: var(--text-primary); }
+      .x-cta--ghost:hover { border-color: var(--x-ink-2); transform: translateY(-1px); }
+      .x-cta svg { width: 16px; height: 16px; fill: currentColor; }
+      @media (prefers-reduced-motion: reduce) { .x-cta:hover { transform: none; } }
+
+      /* Feature card tile */
+      .x-tile {
+        display: grid; grid-template-columns: repeat(3, 8px); gap: 3px; margin-bottom: 18px;
+      }
+      .x-tile i { width: 8px; height: 8px; border-radius: 2px; background: var(--x-t6); }
+      .x-tile i.on { background: var(--x-lime); }
+      .x-tile i.mid { background: var(--x-t1); }
+      .cards p { color: var(--text-secondary); }
+
+      /* Security list */
+      .x-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 0 40px; }
+      .x-list li {
+        display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 16px; align-items: baseline;
+        padding: 18px 0; border-bottom: 1px solid var(--stroke-secondary);
+        font: var(--weight-medium) var(--size-prose)/var(--lh) var(--sans);
+      }
+      .x-list li::before {
+        content: ""; width: 12px; height: 12px; border-radius: 3px; background: var(--x-t3);
+        box-shadow: inset 0 0 0 1px #9bd33a40; transform: translateY(1px);
+      }
+      .x-list li:first-child::before { background: var(--x-lime); }
+
+      /* X1 band */
+      .x-chain {
+        position: relative; overflow: hidden; isolation: isolate;
+        display: grid; gap: 18px; justify-items: start;
+        padding: clamp(28px, 5vw, 48px); border-radius: var(--r-l);
+        background: linear-gradient(135deg, #15241e, #10201a); border: 1px solid var(--stroke-secondary);
+      }
+      .x-chain .x-tiles {
+        -webkit-mask-image: linear-gradient(to left, #000, transparent 60%);
+        mask-image: linear-gradient(to left, #000, transparent 60%);
+        opacity: 0.5;
+      }
+      .x-chain p { font: var(--type-lede); font-weight: var(--weight-regular); color: var(--text-secondary); max-width: 46ch; }
+
+      /* Footer */
+      .x-foot {
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+        padding-top: 24px; border-top: 1px solid var(--stroke-secondary);
+        font-size: var(--size-small); color: var(--text-secondary);
+      }
+      .x-foot__brand { display: inline-flex; align-items: center; gap: 10px; }
+      .x-foot__brand img { width: 24px; height: 24px; border-radius: 6px; }
+      .x-foot__links { display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
+      .x-foot a { color: var(--text-primary); text-underline-offset: 3px; text-decoration-color: var(--stroke-primary); display: inline-grid; place-items: center; min-width: var(--tap); min-height: var(--tap); }
+      .x-foot a:hover { color: var(--x-lime); }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <pattern id="x-mosaic" width="168" height="168" patternUnits="userSpaceOnUse">
+          <rect x="4" y="4" width="34" height="34" rx="8" fill="#5E7F3E" />
+          <rect x="46" y="4" width="34" height="34" rx="8" fill="#1F5A3A" />
+          <rect x="88" y="4" width="34" height="34" rx="8" fill="#2E4D24" opacity=".6" />
+          <rect x="130" y="4" width="34" height="34" rx="8" fill="#6E8B47" opacity=".5" />
+          <rect x="4" y="46" width="34" height="34" rx="8" fill="#3A6B3E" opacity=".7" />
+          <rect x="88" y="46" width="34" height="34" rx="8" fill="#4F7A3F" />
+          <rect x="130" y="46" width="34" height="34" rx="8" fill="#1F5A3A" opacity=".6" />
+          <rect x="46" y="88" width="34" height="34" rx="8" fill="#6B8A4A" opacity=".55" />
+          <rect x="88" y="88" width="34" height="34" rx="8" fill="#5C7440" opacity=".8" />
+          <rect x="4" y="130" width="34" height="34" rx="8" fill="#2E4D24" />
+          <rect x="46" y="130" width="34" height="34" rx="8" fill="#4F7A3F" opacity=".5" />
+          <rect x="130" y="130" width="34" height="34" rx="8" fill="#3A6B3E" />
+        </pattern>
+      </defs>
+    </svg>
+    <div class="page" id="top">
+      <header class="x-head">
+        <a class="x-brand" href="#top" aria-label="mossaic home">
+          <img src="mossaic-icon-v3-dark.png" alt="" width="32" height="32" />
+          <span>mossaic</span>
+        </a>
+        <a class="x-xlink" href="https://x.com/mossaicxyz" target="_blank" rel="noopener" aria-label="Mossaic on X">X</a>
+      </header>
+
+      <main class="main">
+        <section class="x-hero" aria-labelledby="hero-title">
+          <svg class="x-tiles" aria-hidden="true"><rect width="100%" height="100%" fill="url(#x-mosaic)" /></svg>
+          <img class="x-wordmark" src="mossaic-wordmark-dark-v2.png" alt="mossaic" width="1408" height="768" />
+          <span class="x-badge">Testnet coming soon</span>
+          <h1 id="hero-title">Mint, collect and trade NFTs on X1&nbsp;EcoChain.</h1>
+          <p class="x-sub">A security-first marketplace with zero custody. Your assets never leave your wallet until a trade settles.</p>
+          <div class="x-ctas">
+            <a class="x-cta x-cta--primary" href="https://x.com/mossaicxyz" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z"/></svg>
+              Follow on X
+            </a>
+            <a class="x-cta x-cta--ghost" href="#security">How it works</a>
+          </div>
+        </section>
+
+        <section class="section" id="why">
+          <div class="head">
+            <p class="head__eyebrow">Why Mossaic</p>
+            <h2>A marketplace that never holds your assets.</h2>
+          </div>
+          <div class="cards">
+            <div>
+              <div class="x-tile" aria-hidden="true"><i class="on"></i><i class="mid"></i><i></i><i class="mid"></i><i></i><i></i><i></i><i></i><i></i></div>
+              <h3>Zero custody</h3>
+              <p>Listings are signed orders. NFTs and funds stay in your wallet until the trade executes on-chain.</p>
+            </div>
+            <div>
+              <div class="x-tile" aria-hidden="true"><i class="mid"></i><i class="on"></i><i class="mid"></i><i></i><i class="mid"></i><i></i><i></i><i></i><i></i></div>
+              <h3>Built on Seaport</h3>
+              <p>Order matching runs on the unmodified, audited Seaport 1.6 protocol trusted across the EVM ecosystem.</p>
+            </div>
+            <div>
+              <div class="x-tile" aria-hidden="true"><i></i><i class="mid"></i><i class="on"></i><i></i><i></i><i class="mid"></i><i></i><i></i><i></i></div>
+              <h3>Creator tools</h3>
+              <p>ERC-721 and ERC-1155 collections, drops with allowlists, phased mints, reveals and ERC-2981 royalties.</p>
+            </div>
+            <div>
+              <div class="x-tile" aria-hidden="true"><i></i><i></i><i></i><i class="mid"></i><i class="on"></i><i class="mid"></i><i></i><i class="mid"></i><i></i></div>
+              <h3>Full trading</h3>
+              <p>Fixed price, offers, auctions and batch purchases.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="security">
+          <div class="head">
+            <p class="head__eyebrow">Security</p>
+            <h2>Audited building blocks, locked-down keys.</h2>
+          </div>
+          <ul class="x-list">
+            <li>Unmodified Seaport 1.6 core</li>
+            <li>Admin keys held by a 3-of-5 multisig behind a 48-hour timelock</li>
+            <li>Fuzz and invariant tested with Foundry, static analysis with Slither and Aderyn</li>
+            <li>Independent audit and bug bounty before mainnet</li>
+          </ul>
+        </section>
+
+        <section class="section" id="roadmap">
+          <div class="head">
+            <p class="head__eyebrow">Roadmap</p>
+            <h2>From testnet to mainnet in four steps.</h2>
+          </div>
+          <ol class="timeline">
+            <li class="is-current">
+              <p class="timeline__when">Nov 2026</p>
+              <div class="timeline__what">Contracts on X1 testnet</div>
+              <p><span class="chip chip--solid">Next</span></p>
+            </li>
+            <li>
+              <p class="timeline__when">Dec 2026</p>
+              <div class="timeline__what">Public testnet beta</div>
+            </li>
+            <li>
+              <p class="timeline__when">Jan 2027</p>
+              <div class="timeline__what">Independent audit</div>
+            </li>
+            <li>
+              <p class="timeline__when">Feb 2027</p>
+              <div class="timeline__what">Mainnet launch</div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="x-chain" id="x1" aria-labelledby="x1-title">
+          <svg class="x-tiles" aria-hidden="true"><rect width="100%" height="100%" fill="url(#x-mosaic)" /></svg>
+          <h2 id="x1-title" class="head__eyebrow" style="margin:0">Built on X1 EcoChain</h2>
+          <p>X1 EcoChain is an energy-efficient, EVM-compatible Layer 1 powered by Proof of Nodes.</p>
+          <a class="x-cta x-cta--ghost" href="https://x1ecochain.com/" target="_blank" rel="noopener">Learn about X1 EcoChain ↗</a>
+        </section>
+      </main>
+
+      <footer class="x-foot">
+        <span class="x-foot__brand"><img src="mossaic-icon-v3-dark.png" alt="" width="24" height="24" />© 2026 Mossaic</span>
+        <span class="x-foot__links">
+          <a href="https://x.com/mossaicxyz" target="_blank" rel="noopener" aria-label="Mossaic on X">X</a>
+          <span>mossaic.xyz</span>
+        </span>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+  </body>
+</html>
