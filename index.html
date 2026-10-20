@@ -254,6 +254,26 @@
           </ul>
         </section>
 
+        <section class="section" id="testnet">
+          <div class="head">
+            <p class="head__eyebrow">Testnet</p>
+            <h2>Get ready for the Maculatus testnet.</h2>
+          </div>
+          <p>Add the X1 EcoChain testnet to your wallet, then claim free test X1T from the official faucet (100 X1T every 24 hours). Test tokens have no real-world value.</p>
+          <div class="x-ctas" style="justify-content:flex-start">
+            <button type="button" class="x-cta x-cta--primary" id="add-network" style="border:0;cursor:pointer">Add Maculatus to wallet</button>
+            <a class="x-cta x-cta--ghost" href="https://testnet.x1ecochain.com/" target="_blank" rel="noopener">Get test X1T ↗</a>
+            <a class="x-cta x-cta--ghost" href="https://x1ecochain.gitbook.io/x1-ecochain-tech-whitepaper/development-environment/faucet-guide" target="_blank" rel="noopener">Discord faucet guide ↗</a>
+          </div>
+          <p id="add-network-msg" role="status" style="min-height:1.5em;margin-top:12px"></p>
+          <ul class="x-list">
+            <li>Network: X1 EcoChain Testnet (Maculatus)</li>
+            <li>Chain ID: 10778</li>
+            <li>RPC: <code>https://maculatus-rpc.x1eco.com/</code></li>
+            <li>Currency: X1T · Explorer: <a href="https://maculatus-scan.x1eco.com/" target="_blank" rel="noopener">maculatus-scan.x1eco.com ↗</a></li>
+          </ul>
+        </section>
+
         <section class="section" id="verify">
           <div class="head">
             <p class="head__eyebrow">Verify</p>
@@ -313,6 +333,23 @@
         </span>
       </footer>
     </div>
+    <script>
+      (function () {
+        var btn = document.getElementById('add-network'), msg = document.getElementById('add-network-msg');
+        if (!btn) return;
+        btn.addEventListener('click', async function () {
+          if (!window.ethereum) { msg.textContent = 'No wallet found. Install MetaMask or another EVM wallet, or add the network manually with the details below.'; return; }
+          try {
+            await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{
+              chainId: '0x2A1A', chainName: 'X1 EcoChain Testnet (Maculatus)',
+              nativeCurrency: { name: 'X1T', symbol: 'X1T', decimals: 18 },
+              rpcUrls: ['https://maculatus-rpc.x1eco.com/'],
+              blockExplorerUrls: ['https://maculatus-scan.x1eco.com/'] }] });
+            msg.textContent = 'Maculatus added. You can switch to it in your wallet.';
+          } catch (e) { msg.textContent = (e && e.code === 4001) ? 'Request cancelled.' : 'Could not add the network. Use the details below to add it manually.'; }
+        });
+      })();
+    </script>
     <script src="hark.js"></script>
   </body>
 </html>
